@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type="text/javascript">
+        var mat=[[1,2,3],[4,5,6],[7,8,9]];
+        var newStr = [];
+        for (let i=0;i<mat.length;i++){
+           console.log(mat[0][i]);
+           newStr.push(mat[0][i]);
+        }
+        for (let i=1;i<mat.length;i++){
+            console.log(mat[i][mat.length-1]);
+            newStr.push(mat[i][mat.length-1]);
+        }
+        for (let i=mat.length-2;i>=0;i--){
+            console.log(mat[mat.length-1][i]);
+            newStr.push(mat[mat.length-1][i]);
+        }
+        for (let i=0;i<mat.length-1;i++){
+            console.log(mat[1][i]);
+            newStr.push(mat[1][i]);
+        }
+        console.log(newStr)
+
+        /*function printMatrix(matrix)
+        {
+            // write code here
+            if(!matrix){
+                return false;
+            }
+
+            let row=matrix.length;
+            let col=matrix[0].length;
+            let start=0,arr=[]
+
+            while(row>start*2&&col>start*2){
+                circle(matrix,arr,start);
+                start++
+            }
+
+            return arr;
+            console.log(arr);
+        }
+
+        function circle(matrix,arr,start){
+            let row=matrix.length,col=matrix[0].length;
+            let topS=start,topE=col-start;
+            //top
+            for(let i=topS;i<topE;i++){
+                arr.push(matrix[topS][i])
+            }
+
+            let rightS=start+1,rightE=row-start;
+            //right
+            for(let i=rightS;i<rightE;i++){
+                arr.push(matrix[i][topE-1])
+            }
+
+            //bottom
+            let bottomS=topE-2,bottomE=topS;
+            for(let i=bottomS;i>=bottomE&&rightS!=rightE;i--){
+                arr.push(matrix[rightE-1][i])
+            }
+
+            //left
+            let leftS=rightE-2,leftE=start+1;
+            for(let i=leftS;i>=leftE&&bottomS!=bottomE-1;i--){
+                arr.push(matrix[i][topS])
+            }
+
+        }
+        printMatrix(mat);*/
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+</html>

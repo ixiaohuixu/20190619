@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>宝藏</title>
+</head>
+<body>
+<script type="text/javascript">
+    var n = 2 ;
+    var m = 2 ;
+    var strN ='1 2';
+    var strM ='2 1';
+    var arrN =strN.split(' ');
+    var arrM =strM.split(' ');
+    var num=0;
+    for (var i=0;i<n;i++){
+        for (var j=0;j<m;j++){
+                var a=parseInt(arrN[i]);
+                var b=parseInt(arrM[j]);
+                var c=a+b;
+            if (c%2 > 0){
+                num+=1;
+                arrN.splice(i,1);
+                arrM.splice(j,1);
+                console.log(arrN);
+                console.log(arrM);
+                i--;
+                j--;
+            }
+        }
+    }
+    console.log(num)
+    //console.log(arrN);
+    //console.log(arrM);
+</script>
+</body>
+</html>

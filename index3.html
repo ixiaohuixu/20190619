@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>打印页面</title>
+    <link rel="stylesheet" type="text/css" href="common.less">
+</head>
+<body>
+<div id="printBlk">
+    <table>
+        <caption>
+            <b style="float:left;">文件编号:</b>
+            <b style="float:right;margin-right: 300px;">记录编号:</b>
+        </caption>
+        <tbody width="89%" border="1">
+        <tr height="50px" align="center">
+            <th colspan="1">{{baseInfo[0].nameCn}}</th>
+            <td colspan="3">{{baseInfo[0].fieldValues}}</td>
+            <th colspan="1">{{baseInfo[1].nameCn}}</th>
+            <td colspan="3">{{baseInfo[1].fieldValues}}</td>
+        </tr>
+        <tr height="50px"align="center">
+            <th colspan="1">{{baseInfo[2].nameCn}}</th>
+            <td colspan="3">{{baseInfo[2].fieldValues}}</td>
+            <th colspan="1">{{baseInfo[3].nameCn}}</th>
+            <td colspan="3">{{baseInfo[3].fieldValues}}</td>
+        </tr>
+        <tr height="50px"align="center">
+            <th colspan="1">{{baseInfo[4].nameCn}}</th>
+            <td colspan="3">{{baseInfo[4].fieldValues}}</td>
+            <th colspan="1">{{baseInfo[5].nameCn}}</th>
+            <td colspan="3">
+                <el-row :gutter="10">
+                    <el-col :span="8">
+                        <i class="iconfont checker" :class="{'checked':baseInfo[5].fieldValues =='1'}"></i>{{baseInfo[5].options.split(',')[0]}}
+                    </el-col>
+                    <el-col :span="8">
+                        <i class="iconfont checker" :class="{'checked':baseInfo[5].fieldValues =='2'}"></i>{{baseInfo[5].options.split(',')[1]}}
+                    </el-col>
+                </el-row>
+            </td>
+        </tr>
+        <tr height="50px" align="center">
+            <th colspan="1">{{baseInfo[6].nameCn}}</th>
+            <td colspan="7">{{baseInfo[6].fieldValues}}</td>
+        </tr>
+        <tr height="50px" align="center">
+            <th colspan="1">{{baseInfo[7].nameCn}}</th>
+            <td colspan="7">{{baseInfo[7].fieldValues}}</td>
+        </tr>
+        <tr height="50px" align="center">
+            <th colspan="1">{{baseInfo[8].nameCn}}</th>
+            <td colspan="7">{{baseInfo[8].fieldValues}}</td>
+        </tr>
+        <tr height="50px" align="center">
+            <th colspan="1">{{baseInfo[9].nameCn}}</th>
+            <td colspan="7">{{baseInfo[9].fieldValues}}</td>
+        </tr>
+        <tr height="50px" align="center">
+            <th colspan="1">{{baseInfo[10].nameCn}}</th>
+            <td colspan="7">{{baseInfo[10].fieldValues}}</td>
+        </tr>
+        <tr height="50px" align="center">
+            <th colspan="1">{{baseInfo[11].nameCn}}</th>
+            <td colspan="7">{{baseInfo[11].fieldValues}}</td>
+        </tr>
+        <tr height="50px" align="center">
+            <th colspan="1">{{baseInfo[12].nameCn}}</th>
+            <td colspan="3">{{baseInfo[12].fieldValues}}</td>
+            <th colspan="1">{{baseInfo[13].nameCn}}</th>
+            <td colspan="3">{{baseInfo[13].fieldValues}}</td>
+        </tr>
+        <tr height="50px" align="center">
+            <th colspan="1">{{baseInfo[14].nameCn}}</th>
+            <td colspan="3">{{baseInfo[14].fieldValues}}</td>
+            <th colspan="1">{{baseInfo[15].nameCn}}</th>
+            <td colspan="3">{{baseInfo[15].fieldValues}}</td>
+        </tr>
+        <tr height="50px" align="center">
+            <th colspan="1">{{baseInfo[16].nameCn}}</th>
+            <td colspan="7">
+                <i class="iconfont checker" :class="{'checked':baseInfo[16].fieldValues=='1'}"></i>{{baseInfo[16].options.split(',')[0]}}
+                <i class="iconfont checker" :class="{'checked':baseInfo[16].fieldValues=='2'}"></i>{{baseInfo[16].options.split(',')[1]}}
+                <i class="iconfont checker" :class="{'checked':baseInfo[16].fieldValues=='3'}"></i>{{baseInfo[16].options.split(',')[2]}}
+            </td>
+        </tr>
+        <tr height="50px" align="center">
+            <th colspan="1">{{baseInfo[17].nameCn}}</th>
+            <td colspan="3">{{baseInfo[17].fieldValues}}</td>
+            <th colspan="1">{{baseInfo[18].nameCn}}</th>
+            <td colspan="3">{{baseInfo[18].fieldValues}}</td>
+        </tr>
+        <tr height="50px" align="center">
+            <th rowspan="3" colspan="1">{{baseInfo[19].title}}</th>
+            <th colspan="1">{{baseInfo[19].nameCn}}</th>
+            <td colspan="2">{{baseInfo[19].fieldValues}}{{baseInfo[19].unit}}</td>
+            <th colspan="2">{{baseInfo[20].nameCn}}</th>
+            <td colspan="2">{{baseInfo[20].fieldValues}}{{baseInfo[20].unit}}</td>
+        </tr>
+        <tr height="50px" align="center">
+            <th colspan="1">{{baseInfo[23].nameCn}}</th>
+            <td colspan="2">{{baseInfo[23].fieldValues}}{{baseInfo[23].unit}}</td>
+            <th colspan="2">{{baseInfo[22].nameCn}}</th>
+            <td colspan="2">{{baseInfo[22].fieldValues}}{{baseInfo[22].unit}}</td>
+        </tr>
+        <tr height="50px" align="center">
+            <th colspan="1">{{baseInfo[24].nameCn}}</th>
+            <td colspan="2">{{baseInfo[24].fieldValues}}{{baseInfo[24].unit}}</td>
+            <th colspan="2">{{baseInfo[21].nameCn}}</th>
+            <td colspan="2">{{baseInfo[21].fieldValues}}{{baseInfo[21].unit}}</td>
+        </tr>
+        <tr height="50px" align="center">
+            <th colspan="1">{{baseInfo[25].nameCn}}</th>
+            <td colspan="7">{{baseInfo[25].fieldValues}}</td>
+        </tr>
+        <tr height="50px" align="center">
+            <th colspan="1">{{baseInfo[26].nameCn}}</th>
+            <td colspan="7">
+                <i class="iconfont checker" :class="{'checked':baseInfo[26].fieldValues =='1'}"></i>{{baseInfo[26].options.split(',')[0]}}
+                <i class="iconfont checker" :class="{'checked':baseInfo[26].fieldValues =='2'}"></i>{{baseInfo[26].options.split(',')[1]}}
+            </td>
+        </tr>
+        <tr height="50px" align="center">
+            <th colspan="1">{{baseInfo[27].title}}</th>
+            <td colspan="7" align="left">
+                <ul>
+                    <li>{{baseInfo[27].nameCn}}：{{baseInfo[27].fieldValues}}</li>
+                    <li>{{baseInfo[28].nameCn}}：
+                        <!--<i class="iconfont checker" :class="{checked:baseInfo[28].options.indexOf('完好')>=0}">完好</i>-->
+                        <i class="iconfont checker" :class="{'checked':baseInfo[28].fieldValues?baseInfo[28].fieldValues.indexOf('1')>=0:false}"></i>{{baseInfo[28].options.split(',')[0]}}
+                        <i class="iconfont checker" :class="{'checked':baseInfo[28].fieldValues?baseInfo[28].fieldValues.indexOf('2')>=0:false}"></i>{{baseInfo[28].options.split(',')[1]}}
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr height="50px" align="center">
+            <th colspan="1">{{baseInfo[29].nameCn}}</th>
+            <td colspan="7">
+                <el-row :gutter="20">
+                    <el-col :span="8">
+                        <i class="iconfont checker" :class="{'checked':baseInfo[29].fieldValues == '1'}"></i>{{baseInfo[29].options.split(',')[0]}}
+                    </el-col>
+                    <el-col :span="8">
+                        <i class="iconfont checker" :class="{'checked':baseInfo[29].fieldValues == '2'}"></i>{{baseInfo[29].options.split(',')[1]}}
+                    </el-col>
+                </el-row>
+            </td>
+        </tr>
+        <tr height="50px" align="center">
+            <th colspan="1">{{baseInfo[30].nameCn}}</th>
+            <td colspan="7" align="left">
+                《锅炉安全技术监察规程》(TSG G0001-2012)、《锅炉定期检验规则》（TSG G7002-2015）、《锅炉水质处理检验规则》（TSG G5002-2010）
+            </td>
+        </tr>
+        <tr height="50px" align="center">
+            <th rowspan="4" colspan="1">{{baseInfo[31].nameCn}}</th>
+            <td colspan="1" align="left">
+                <i class="iconfont checker" :class="{'checked':baseInfo[31].fieldValues=='1'}"></i>符合要求</td>
+            <th colspan="6">{{baseInfo[33].title}}</th>
+        </tr>
+        <tr height="50px" align="center">
+            <td colspan="1" align="left">
+                <i class="iconfont checker" :class="{'checked':baseInfo[31].fieldValues=='2'}"></i>符合基本要求</td>
+            <th colspan="1">{{baseInfo[33].nameCn}}</th>
+            <td colspan="2">{{baseInfo[33].fieldValues}}{{baseInfo[33].unit}}</td>
+            <th colspan="1">{{baseInfo[35].nameCn}}</th>
+            <td colspan="2">{{baseInfo[35].fieldValues}}{{baseInfo[35].unit}}</td>
+        </tr>
+        <tr height="50px" align="center">
+            <td colspan="1" align="left">
+                <i class="iconfont checker" :class="{'checked':baseInfo[31].fieldValues=='3'}"></i>不符合要求</td>
+            <th colspan="1">{{baseInfo[34].nameCn}}</th>
+            <td colspan="2">{{baseInfo[34].fieldValues}}</td>
+            <th colspan="1">{{baseInfo[36].nameCn}}</th>
+            <td colspan="2">{{baseInfo[36].fieldValues}}</td>
+        </tr>
+        <tr height="50px" align="center">
+            <th colspan="1">{{baseInfo[32].nameCn}}</th>
+            <td colspan="6">{{baseInfo[32].fieldValues}}</td>
+        </tr>
+        <tr height="50px" align="center">
+            <th colspan="1">{{baseInfo[37].nameCn}}</th>
+            <td colspan="7">
+                {{baseInfo[37].fieldValues}}
+            </td>
+        </tr>
+        <tr height="50px" align="center">
+            <th width="100px">{{baseInfo[38].nameCn}}</th>
+            <td width="100px">
+                {{baseInfo[38].fieldValues}}
+            </td >
+            <th width="100px">{{baseInfo[39].nameCn}}</th>
+            <td width="100px">
+                {{baseInfo[39].fieldValues}}
+            </td>
+            <th width="100px">{{baseInfo[40].nameCn}}</th>
+            <td width="100px">
+                {{baseInfo[40].fieldValues}}
+            </td>
+            <th width="100px">{{baseInfo[41].nameCn}}</th>
+            <td width="100px">
+                {{baseInfo[41].fieldValues}}
+            </td>
+        </tr>
+        <tr height="50px" align="center">
+            <th>{{baseInfo[42].nameCn}}</th>
+            <td colspan="4">
+                {{baseInfo[42].fieldValues}}
+            </td>
+            <th>{{baseInfo[43].nameCn}}</th>
+            <td colspan="2">
+                {{baseInfo[43].fieldValues}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p slot="footer" class="dialog-footer">
+        <!-- <el-button type="primary" v-print="'#printBlk'">打印</el-button>-->
+        <el-button type="primary" @click="printCheckDetail">打印</el-button>
+    </p>
+</div>
+
+<script>
+
+</script>
+</body>
+</html>

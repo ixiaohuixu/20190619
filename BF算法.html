@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BF算法</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*var str="21346109786543";//主串
+    var ts="6543";//子串*/
+    /*var str="BBC ABCDAB ABCDABCDABDE";//主串
+    var ts="ABCDABD";*/
+    /*var str="北京市西城区德胜街道人定湖北巷1号院3号楼盒马鲜生";//主串
+    var ts="马盒"//子串*/
+    /*var str="北京市均豪物业管理股份有限公司";//主串
+    var ts="工作"//子串*/
+    var str="30101101042004020019";//主串
+    var ts="0000";//子串
+    function BF(s,t){//BF算法
+        var i=0,j=0,v=-1,m=0;
+        while(i<s.length&&j<t.length){
+            if(s[i]==t[j]){//相等就移动指针
+                i++;
+                j++;
+                m++;
+                console.log(i,j,m)
+
+            }
+            else{//指针归零
+
+                i=i-j+1;
+                j=0;
+            }
+        }
+
+        if(j==t.length){//判断是否找到
+            v=i-j;
+        }else{
+            v=-1;
+        }
+        //console.log(i,j,m)
+        return v;
+    }
+    function bfSecrch(){
+        //这里放要执行的代码
+        var index = BF(str,ts)
+        console.log(index)
+
+    }
+    //开始测试并输出
+    function test(func)
+    {
+        var start=new Date().getTime();
+        func();
+        var end=new Date().getTime();
+        return (end-start)+"ms";
+        console.log((end-start)+"ms")
+    }
+    var time = test(bfSecrch);
+    console.log(time)
+
+
+
+</script>
+</body>
+</html>

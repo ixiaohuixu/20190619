@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KMP算法</title>
+</head>
+<body>
+<script type="text/javascript">
+    var str="21346109786543";//主串
+    var ts="6543";//子串
+    /*var str="BBC ABCDAB ABCDABCDABDE";//主串
+    var ts="ABCDABD";//子串*/
+   /* var str="北京市西城区德胜街道人定湖北巷1号院3号楼盒马鲜生";//主串
+    var ts="盒马"//子串*/
+    /*var str="北京市均豪物业管理股份有限公司";//主串
+    var ts="工作"//子串*/
+    var str="30101101042004020019";//主串
+    var ts="0010";//子串
+    function GetNext(t,arr){
+        var k=-1,j=0;
+        arr[0]=-1;
+        while(j<t.length-1){
+            if(k==-1||t[j]==t[k]){
+                j++;
+                k++;
+                arr[j]=k;
+            }else{
+                k=arr[k];
+            }
+        }
+        return arr
+    }
+    function Kmp(s,t){
+        var pattern=new Array(t.length);
+        var j=0,i=0,v=0;
+        pattern = GetNext(t,pattern);
+        while(i<s.length&&j<t.length){
+            if(j==-1||s[i]==t[j]){
+                i++;
+                j++;
+                console.log(i,j)
+            }
+            else{
+                j=pattern[j];
+                //console.log(j)
+            }
+        }
+        if(j>=t.length){
+            v=i-t.length;
+        }
+        else{
+            v=-1;
+        }
+        return v;
+    }
+    function kmpSecrch(){
+        //这里放要执行的代码
+        var index = Kmp(str,ts)
+        console.log(index)
+
+    }
+    //开始测试并输出
+    function test(func)
+    {
+        var start=new Date().getTime();
+        func();
+        var end=new Date().getTime();
+        return (end-start)+"ms";
+        console.log((end-start)+"ms")
+    }
+    var time = test(kmpSecrch);
+    console.log(time)
+
+
+
+</script>
+</body>
+</html>

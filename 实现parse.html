@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>parse</title>
+</head>
+<body>
+<script type="text/javascript">
+    var object={
+        b:{c:4},
+        d:[{e:5},{e:6}]
+    };
+    console.log(object['b']['c']+'bbbbbbbb')
+    console.log(object['d'][0]['e']+'dddddddd')
+    /*function parse(obj, str) {
+        str.replace('[', '.').replace(']', '').split('.').map((ele) => obj = obj[ele.trim()]);
+        return obj || 'undefined';
+    }*/
+    function parse(obj, str) {
+        var strArr=str.replace('[', '.').replace(']', '').split('.');
+       // var strArr=str.replace('[', '.').replace(']', '') ;
+        console.log(strArr)    //["d", "0", "e"]
+        console.log(str)       //d[0].e
+        var i=0;
+        while(i<strArr.length){
+            if(obj[strArr[i]]){
+                obj=obj[strArr[i]];
+                console.log(obj+'循环')
+                i++;
+            }else{
+                return 'undefined';
+            }
+        }
+
+        return obj;
+    }
+    //parse(object,'b.c')
+    parse(object, 'd[0].e')
+    //console.log(parse(object,'b.c')==4)//true
+    //console.log( parse(object, 'd[0].e') == 5 )    // true
+    //console.log( parse(object, 'd.0.e') == 5 )  //true
+   // console.log( parse(object, 'd[1].e') == 6 )  //true
+   // console.log( parse(object, 'd.1.e') == 6 )  //true
+   // console.log( parse(object, 'f') == 'undefined' ) //true
+</script>
+</body>
+</html>

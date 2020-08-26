@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>满意度最小</title>
+</head>
+<body>
+<script type="text/javascript">
+    var n = parseInt(2);
+    //var n = parseInt(readline());
+    var min=[];
+    for(var i=0;i<n;i++){
+        var arr = readline().split(' ')
+        var a=parseInt(arr[0]*(i-1));
+        var b=parseInt(arr[1]*(n-i));
+        var c=a+b;
+        min.push(c);
+        //console.log(arr)
+        //
+    }
+    for(var i=0;i<min.length;i++){
+        s +=min[i]
+    }
+    console.log(s)
+</script>
+</body>
+</html>

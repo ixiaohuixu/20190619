@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue双向数据绑定远离</title>
+</head>
+<body>
+<div id="mvvm-app">
+    <input type="text" v-model="word">
+    <p>{{word}}</p>
+    <button v-on:click="sayHi"></button>
+</div>
+<script type="text/javascript">
+    var vm = new MVVM({
+        el:'#mvvm-app',
+        data:{
+            word:'hello world'
+        },
+        methods:{
+            sayHi:function(){
+                this.word = 'Hi,everybody'
+            }
+        }
+    })
+
+
+</script>
+</body>
+</html>

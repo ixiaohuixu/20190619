@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>最长公共字符串</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*
+    * 1.stringObject.substring(start,stop)
+    *   返回值一个新的字符串，该字符串值包含 stringObject 的一个子字符串，
+    *   其内容是从 start 处到 stop-1 处的所有字符，其长度为 stop 减 start。
+    * 2.stringObject.substr(start,length)
+    * 返回值：
+    * 一个新的字符串，包含从 stringObject 的 start（包括 start 所指的字符） 处开始的 length 个字符。
+    * 如果没有指定 length，那么返回的字符串包含从 start 到 stringObject 的结尾的字符。
+    * */
+    function findSubStr(s1,s2){
+        var sstr= "" ,
+            L1=s1.length,
+            L2=s2.length;
+        if (L1>L2){
+            var s3=s1;
+                s1=s2,
+                s2=s3,
+                L1=s1.length;//原来的S1  长的字符串
+                L2=s2.length;
+        }
+        console.log(s1)
+        console.log(s2)
+        console.log(L1)
+        console.log(L2)
+        for ( var j=L2;j> 0 ;j--){
+            for ( var i= 0 ;i<=L2-j;i++){
+                sstr = s2.substr(i,j)
+                console.log(sstr+'  '+j+'  '+i)
+                if (s1.indexOf(sstr)>=0){
+                    return sstr
+                    /*
+                    * 注：此处用return  而不用break的原因，
+                    * 因为break只能退出当前的for循环，即内层循环，外层循环还会继续，
+                    * 但是return则会再找到之后不会执行所有语句
+                    * */
+                    //console.log(sstr);
+                    //break;
+                }
+
+            }
+
+        }
+        return '未找到'
+       /* for ( var j=L2;j> 0 ;j--){
+            for ( var i= 0 ;i<=L2-j;i++){
+                //console.log('外层循环'+'第'+j+'次');
+                sstr = s1.substr(i,j);
+                //console.log(L2-j)
+                //console.log(sstr)
+                if (s2.indexOf(sstr)>= 0 ){
+                    //console.log(sstr)
+                    return sstr;
+                }
+
+            }
+            return "" ;
+        }*/
+        //return sstr
+    }
+    //console.log(findSubStr( "aaa3333" , "baa333cc" )); //aa333
+    //console.log(findSubStr(  "baa333ccX3333333x","aaaX3333--"  )); //X3333
+    //console.log(findSubStr( "abcd" , "abdde" )); //ab
+    //console.log(findSubStr( "abcccc3" , "bcc" )); //' '
+    console.log(findSubStr( "de","abcdef"))
+
+</script>
+</body>
+</html>

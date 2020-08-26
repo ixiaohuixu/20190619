@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        //var num = 74
+        var num = parseInt(readline());
+        var ms=0;
+        var s=0;
+        var m=0;
+        var h=0;
+        var d=0;
+        if(num>=24){
+            s= Math.floor(num/24);
+            ms=num%24;
+            if (s>=60){
+                m=Math.floor(s/60);
+                s=s%60;
+                if (m>=60){
+                    h=Math.floor(m/60);
+                    m=m%60;
+                    if(h>=1000){
+                        d=Math.floor(h/1000);
+                        h=h%1000;
+                    }
+                }
+            }
+        }else ms=num;
+        print(d+'D'+' '+h+'H'+' '+m+'M'+' '+s+'S'+' '+ms+'MS')
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

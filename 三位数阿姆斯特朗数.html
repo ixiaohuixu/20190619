@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三位数的阿姆斯特朗数</title>
+</head>
+<body>
+<script type="text/javascript">
+    var min =100;
+    var max = 999;
+    var i,j,k;
+    for(var n=min;n<=max;n++){
+        //console.log(n)
+        i=parseInt(n/100);
+        j=parseInt(n%100/10);
+        k=parseInt(n%10);
+
+        if((i*i*i+j*j*j+k*k*k)==n){
+            console.log(n)
+        }
+    }
+
+
+
+
+</script>
+</body>
+</html>

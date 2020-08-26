@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百度2019文字输出</title>
+    <style type="text/css">
+        html, body {margin: 0;}
+        .color1 {color: #E60012;}
+        .color2 {color: #EB6100;}
+        .color3 {color: #F39800;}
+        .color4 {color: #FCC800;}
+        .color5 {color: #FFF100;}
+        .color6 {color: #CFDB00;}
+        .color7 {color: #8FC31F;}
+        .color8 {color: #22AC38;}
+        .color9 {color: #009944;}
+        .color10 {color: #009B6B;}
+        .color11 {color: #009E96;}
+        .color12 {color: #00A0C1;}
+        .color13 {color: #00A0E9;}
+        .color14 {color: #0086D1;}
+        .color15 {color: #0068B7;}
+        .color16 {color: #00479D;}
+        .color17 {color: #1D2088;}
+        .color18 {color: #601986;}
+        .color19 {color: #920783;}
+        .color20 {color: #BE0081;}
+        .color21 {color: #E4007F;}
+        .color22 {color: #E5006A;}
+        .color23 {color: #E5004F;}
+        .color24 {color: #E60033;}
+        .word {font-size: 20px;}
+        .content {text-align: center;font-size:0;}
+        .blink {
+            font-size: 20px;
+            animation: fade 500ms infinite;
+            -webkit-animation: fade 500ms infinite;
+        }
+        @keyframes fade {
+            from {opacity: 1.0;}
+            50% {opacity: 0;}
+            to {opacity: 1.0;}
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <span class="word color23">h</span>
+    <span class="word color22">e</span>
+    <span class="word color4">l</span>
+    <span class="word color24">l</span>
+    <span class="word color17">o</span>
+    <span class="word color2">&nbsp;</span>
+    <span class="word color9">w</span>
+    <span class="word color3">o</span>
+    <span class="word color1">r</span>
+    <span class="word color23">l</span>
+    <span class="word color15">d</span>
+    <br>
+    <span class="word color15">你</span>
+    <span class="word color13">好</span>
+    <span class="word color16">世</span>
+    <span class="word color19">界</span>
+    <span class="blink" id="jsBlink">|</span>
+</div>
+<script type="text/javascript">
+    /*
+    页面上存在id为jsBlink的下划线闪动节点，请按照如下需求实现 output 函数
+    1、函数 output 接收一个字符串参数，每隔200毫秒在闪动节点之前逐个显示字符
+    2、请新建span节点放置每个字符，其中span必须存在class "word"，并随机加上 color0 ~ color23 中的任一个class（请使用系统随机函数）
+    3、每次输出指定字符串前，请将闪动节点之前的所有其他节点移除
+    4、不要销毁或者重新创建闪动节点
+    5、如果输出字符为空格、<、>，请分别对其进行HTML转义，如果是\n请直接输出<br />，其他字符不需要做处理
+    6、请不要手动调用output函数
+    7、当前界面为系统执行 output('hello world\n你好世界') 之后，最终的界面，过程请参考以下图片
+    8、请不要手动修改html和css
+    9、不要使用第三方插件
+    10、请使用ES5语法
+    */
+
+
+    function output(str) {
+        var showContent = document.getElementsByClassName("content")
+        var childSpan =document.getElementsByClassName('word')
+        //var childSpan = document.querySelectorAll('.word')
+        //var childSpan = document.querySelector('.word')
+        //console.log(showContent)
+        //console.log(childSpan)
+        //清除闪动节点之前的所有其他节点
+        while (childSpan.length > 0){
+            showContent[0].removeChild(childSpan[0])
+        }
+        //删除br
+        var brr = document.getElementsByTagName('br')
+        while(brr.length>0){
+            showContent[0].removeChild(brr[0])
+        }
+
+        var arr = str.split('')
+        console.log(arr)
+
+        for(var i=0;i<arr.length;i++){
+            if (arr[i]==='<'||arr[i]==='>'||arr[i]===''){
+                switch (arr[i]) {
+                    case '<':
+                        return '&lt';
+                        break;
+                    case '>':
+                        return '&gt';
+                        break;
+                    case ' ':
+                        return '&nsp';
+                        break;
+
+                }
+            }
+        }
+        console.log(arr)
+        var blank = document.getElementById("jsBlink")
+        var j=0;
+        var show = setInterval(function () {
+            if (j >= arr.length){
+                clearInterval(show)
+                var dId = setTimeout(function () {
+                    var showContent = document.getElementsByClassName("content")
+                    var childSpan =document.getElementsByClassName('word')
+                    //var childSpan = document.querySelectorAll('.word')
+                    //var childSpan = document.querySelector('.word')
+                    //console.log(showContent)
+                    //console.log(childSpan)
+                    //清除闪动节点之前的所有其他节点
+                    while (childSpan.length > 0){
+                        showContent[0].removeChild(childSpan[0])
+                    }
+                    //删除br
+                    var brr = document.getElementsByTagName('br')
+                    while(brr.length>0){
+                        showContent[0].removeChild(brr[0])
+                    }
+                },500)
+                var sId = setTimeout(function () {
+                    output('hello world\n 你好世界')
+                },1000)
+                return
+            }
+            if (arr[j]==='\n'){
+                var child = document.createElement('br');
+                showContent[0].insertBefore(child,blank);
+            }else {
+                var child = document.createElement('span');
+                child.innerHTML= arr[j];
+                child.className = 'word'+' color'+Math.floor(Math.random()*(24)+1)
+
+                showContent[0].insertBefore(child,blank)
+            }
+            j++
+
+        },100)
+
+    }
+
+
+
+
+
+    output('hello world\n 你好世界')
+
+
+
+
+   /* function output(str) {
+        //先删除原有的节点
+        var showContent = document.getElementsByClassName("content");
+        var childSpan = document.getElementsByClassName("word");
+        console.log(showContent)
+        console.log(childSpan)
+        while (childSpan.length > 0) {
+            showContent[0].removeChild(childSpan[0]);
+        }
+        //删除剩下的换行
+        var brr = document.getElementsByTagName("br");
+        if (brr.length > 0) {
+            showContent[0].removeChild(brr[0]);
+        }
+
+        //转义
+        var arr = str.split('');
+        console.log(arr)
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] != " " || arr[i] != "<" || arr[i] != ">") {
+
+            } else {
+                arr[i] = arr[i].replace(/[\<\>\  ]/g, function (c) {
+                    switch (c) {
+                        case "\<":
+                            return '&lt';
+                            break;
+                        case "\>":
+                            return '&gt';
+                            break;
+                        case "\ ":
+                            return '&nbsp';
+                            break;
+                    }
+                })
+            }
+        }
+        console.log(arr);
+
+        //获取闪动节点
+        var blink = document.getElementById("jsBlink");
+        //设置定时器
+        var j = 0;
+        var sId;
+        var tId;
+        //setInterval 以周期的方式调用函数，自动循环，clear 结束循环
+        var show = setInterval(function () {
+            if (j >= arr.length) {
+                clearInterval(show);
+                sId = setTimeout(function () {
+                    //先删除原有的节点
+                    var showContent = document.getElementsByClassName("content");
+                    var childSpan = document.getElementsByClassName("word");
+                    console.log(showContent)
+                    console.log(childSpan)
+                    while (childSpan.length > 0) {
+                        showContent[0].removeChild(childSpan[0]);
+                    }
+                    //删除剩下的换行
+                    var brr = document.getElementsByTagName("br");
+                    showContent[0].removeChild(brr[0]);
+                }, 500);
+
+                tId = setTimeout(function () {
+                    output("hello world\n你好世界");
+                }, 1000)
+                return
+            }
+            if (arr[j] == "\n") {
+                var newChild = document.createElement("br");
+                showContent[0].insertBefore(newChild, blink);
+            } else {
+                var newChild = document.createElement("span");
+                newChild.innerHTML = arr[j];    //包括空格
+                newChild.className = "word" + " color" + (Math.floor(Math.random() * (24 - 1 + 1)) + 1);
+                showContent[0].insertBefore(newChild, blink);
+            }
+            j++;
+        }, 200);
+    }*/
+
+
+</script>
+</body>
+</html>

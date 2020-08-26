@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三数之和</title>
+</head>
+<body>
+<script type="text/javascript">
+    var str='';
+    var threeSum = function(nums,su) {
+        if(nums.length < 3){
+            return [];
+        }
+
+        let res = [];
+        // 排序
+        //nums.sort((a, b) => a - b);
+        for(let i = 0; i < nums.length; i++){
+            for (var j = i+1; j < nums.length;j++){
+                if(nums[i]==nums[j]){
+                    nums.splice(j,1)
+                    j--;
+                }
+            }
+
+        }
+        for(var i=0;i<nums.length;i++){
+            /* if(nums[i] > 0){
+                 // 若当前元素大于0，则三元素相加之后必定大于0
+                 break;
+             }*/
+             // l为左下标，r为右下标
+             let l = i + 1; r = nums.length - 1;
+             while(l<r){
+                 let sum = nums[i] + nums[l] + nums[r];
+                 if(sum == su){
+                     res.push([nums[i], nums[l], nums[r]]);
+                     /*while(l < r && nums[l] == nums[l+1]){
+                         l++
+                     }*/
+                    /* while(l < r && nums[r] == nums[r-1]){
+                         r--;
+                     }*/
+                     l++;
+                     r--;
+                 }
+                 else if(sum < su){
+                     l++;
+                 }
+                 else if(sum > su){
+                     r--;
+                 }
+             }
+        }
+        console.log(res)
+        for (var i=0;i<res.length;i++){
+            res[i]=res[i].join(' ')
+            console.log(res[i])
+        }
+        //return res
+    };
+
+    var arr=[-43,-36,-32,-31,-15,0,15,30,32,37,39]
+   // var arr=[-43,-36,-32,-31,30,32,37,39]
+    var su=30
+    var res;
+
+    res=threeSum(arr,su)
+    //console.log(res)
+</script>
+</body>
+</html>

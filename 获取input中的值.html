@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取input中的值</title>
+
+</head>
+<body>
+<form id="form1">
+    <table border="0">
+        <tr>
+            <td>
+                姓名：
+            </td>
+            <td>
+                <input id="name" name="name" type="text"/>
+            </td>
+        </tr>
+    </table>
+</form>
+<script type="text/javascript">
+    var name1 = document.getElementById("name");
+    console.log(name)
+    if ("oninput" in name1){
+        name1.addEventListener('input',getword);
+    }else{
+        name1.onpropertychange = getWord;  //IE 6/7/8
+    }
+
+    function getword(){
+        console.log(name1.value);
+    }
+
+</script>
+<!--<input type="text" id='btn' disable='disable' value="123">
+<p id="title"></p>
+<script>
+    var oBtn = document.getElementById('btn');
+    var oTi = document.getElementById('title');
+    if('oninput' in oBtn){
+        oBtn.addEventListener("input",getWord,false);
+    }else{
+        oBtn.onpropertychange = getWord;
+    }
+
+    function getWord(){
+        //oTi.innerHTML = oBtn.value;
+        console.log(oBtn.value)
+    }
+</script>-->
+</body>
+</html>

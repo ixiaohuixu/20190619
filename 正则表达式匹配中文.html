@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式匹配中文</title>
+</head>
+<body>
+<script type="text/javascript">
+    var reg = /[\u4E00-\u9FA5]/;
+    var str = '上大学考好学校000qsmka---++你好吗我不好好的'
+    var arr = str.split('')
+    var count = 0;
+    console.log(arr)
+    for(var i=0;i<arr.length;i++){
+        if(reg.test(arr[i])){
+            count +=1
+        }else {
+            count+=0.5
+        }
+    }
+    console.log(count)
+</script>
+</body>
+</html>

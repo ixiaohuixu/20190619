@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>排列计数</title>
+</head>
+<body>
+<script type="text/javascript">
+      var n = 4;
+      var str ='1 1 0'
+      var strA= str.split(' ');
+      var strP=[];
+      var res=[];
+      for (var i=1;i<=n;i++){
+          strP.push(i)
+      }
+      console.log(strP)
+
+      function jisuan(strA,strP) {
+          for (var i=0;i<=strA.length;i++){
+              if (strA[i]==1){
+                  if (strP[i]<strP[i+1]){
+                      var temp=strP[i];
+                      strP[i]=strP[i+1];
+                      strP[i+1]=temp;
+                  }
+              }else if(strA[i]==0){
+                  if (strP[i]>strP[i+1]){
+                      var temp=strP[i]
+                      strP[i]=strP[i+1];
+                      strP[i+1]=temp;
+                  }
+              }
+          }
+          console.log(strP)
+          jisuan(strA,strP)
+      }
+
+
+      jisuan(strA,strP)
+</script>
+</body>
+</html>

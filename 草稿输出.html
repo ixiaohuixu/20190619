@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>草稿输出</title>
+</head>
+<body>
+<script type="text/javascript">
+    var str='a<<b((c)<)'
+    var re=/\((.+)\)/g
+    console.log(str.match(re))
+    str=str.replace(re,'')
+    var arr=str.split('')
+    for (var i=0;i<str.length;i++){
+        if (arr[i]==='<'){
+            arr.splice(i,1)
+            i--;
+            if(i>=0){
+                arr.splice(i,1);
+                i--;
+            }
+
+
+        }
+
+    }
+    console.log(arr)
+</script>
+</body>
+</html>

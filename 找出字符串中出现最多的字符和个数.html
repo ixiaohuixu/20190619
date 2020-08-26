@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>找出字符串中出现最多的字符和个数</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*function sea(str) {
+        var arr = str.split('')
+       // console.log(arr)
+        var coun=new Array();
+        for (var i=0;i<arr.length;i++){
+            coun[i]=1;
+            for (var j=i+1;j<arr.length;j++){
+                if (arr[i]===arr[j]){
+                    arr.splice(j,1);
+                    coun[i] +=1;
+                    j--;
+                }
+            }
+
+        }
+        for (var i=0;i<coun.length;i++) {
+            if (coun[i]<coun[i+1]) {
+                var temp = coun[i];
+                coun[i]=coun[i+1];
+                coun[i+1]=temp;
+
+            }
+        }
+        return arr[]+' '+coun[0]
+    }
+
+    var str ='success';
+    var res = sea(str);
+    console.log(res)*/
+
+    var str="sssfgtdfssddfsssfssss";
+    function max(){
+        var json={};
+        var num=0;
+        var value=null;
+        for(var i=0;i<str.length;i++){
+            var k=str[i];
+            if(!json[k]){
+                json[k]=[];
+                //console.log(i+' '+json[k])
+            }
+            json[k].push(k);     //这里不需要else，否则只有存在这个字符时才添加。次数会少一次
+            console.log(i+'+'+json[k])
+        }
+        for(var attr in json){
+            if(num<json[attr].length){
+                num=json[attr].length;
+                value=json[attr][0];
+            }
+        }
+        console.log( value+' '+num);
+    };
+
+    max(str);
+</script>
+</body>
+</html>

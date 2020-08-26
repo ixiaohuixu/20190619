@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>大整数的加法</title>
+</head>
+<body>
+<script type="text/javascript">
+    function bigNumAdd(a,b){
+        var m = a.split('').reverse();
+        var n = b.split('').reverse();
+        var ret = [];
+        var s = 0;
+
+        for(var i = 0; i < a.length || i < b.length; i++){
+            var t = (m[i]|0) + (n[i]|0) + s;
+            //console.log(i+'  '+t)
+            ret.push(t%10);
+            s = (t/10)|0;
+           // console.log(s)
+        }
+        //最高位的数字相加，如过大于10则进一，只限最高位
+        if(s){
+            //console.log(s)
+            ret.push(s);
+            //console.log(ret+'====')
+        }
+        return ret.reverse().join('');
+    }
+    var a='6313254';
+        b='4354325';
+        res= bigNumAdd(a,b);
+        console.log(res)
+</script>
+</body>
+</html>

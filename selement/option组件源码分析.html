@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="el-select">
+    <div v-if="multiple" class="el-select_tags">
+    <span>
+        <!--放置多选时的选中的tag，以tag展现-->
+    </span>
+        <!--搜索功能-->
+        <input v-model="query" v-if="filterable" @input="e=>handleQueryChange(e.target.value)"/>
+    </div>
+    <!--单选的时候选中的值回显-->
+    <el-input v-model="selectedLabel" :clsaa="{'is-focus':visible}">
+        <!--XXX-->
+    </el-input>
+    <!--下拉框-->
+    <el-select-menu>
+        <el-scrollbar v-show="options.length>0&&!loading">
+            <!--选项内容-->
+            <el-option :value="query" created v-if="showNewOption">
+            </el-option>
+            <slot></slot>
+        </el-scrollbar>
+        <!-- options为空显示的默认文字或者select处于loading的情况 -->
+    </el-select-menu>
+</div>
+<script type="text/javascript">
+    handleQueryChange(val){
+        if (this.previousQuery === val) return;
+        if (
+            this.previousQuery === null &&
+            (typeof this.filterMethod === 'function' || typeof this.remoteMethod === 'function')
+        ) {
+            this.previousQuery = val;
+            return;
+        }
+        this.previousQuery = val;
+        this.$nextTick(() => {
+            if (this.visible) this.broadcast('ElSelectDropdown', 'updatePopper');
+        });
+        this.hoverIndex = -1;
+        if (this.multiple && this.filterable) {
+            const length = this.$refs.input.value.length * 15 + 20;
+            this.inputLength = this.collapseTags ? Math.min(50, length) : length;
+            this.managePlaceholder();
+            this.resetInputHeight();
+        }
+        if (this.remote && typeof this.remoteMethod === 'function') {
+            this.hoverIndex = -1;
+            this.remoteMethod(val);
+        } else if (typeof this.filterMethod === 'function') {
+            this.filterMethod(val);
+            this.broadcast('ElOptionGroup', 'queryChange');
+        } else {
+            this.filteredOptionsCount = this.optionsCount;
+            this.broadcast('ElOption', 'queryChange', val);
+            this.broadcast('ElOptionGroup', 'queryChange');
+        }
+        if (this.defaultFirstOption && (this.filterable || this.remote) && this.filteredOptionsCount) {
+            this.checkDefaultFirstOption();
+        }
+    }
+
+    //ajax
+    var Ajax={
+        get: function(url, fn) {
+            // XMLHttpRequest对象用于在后台与服务器交换数据
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+            xhr.onreadystatechange = function() {
+                // readyState == 4说明请求已完成
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // 从服务器获得数据
+                    fn.call(this, xhr.responseText);
+                }
+            };
+            xhr.send();
+        }
+    }
+    //axios
+    var Axios = {
+        get: function(url) {
+            return new Promise((resolve, reject) => {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', url, true);
+                xhr.onreadystatechange = function() {
+                        // readyState == 4说明请求已完成
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            // 从服务器获得数据
+                            resolve(xhr.responseText)
+                        }
+                    };
+                xhr.send();
+            })
+        }
+    }
+</script>
+</body>
+</html>

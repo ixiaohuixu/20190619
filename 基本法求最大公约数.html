@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>最大公约数</title>
+    <script type="text/javascript">
+        var a=5;
+        var b=12;
+        var min = Math.min(a,b);
+        var max = Math.max(a,b);
+        for (var i=min ;i>0;i--){
+            if (a%i==0&&b%i==0){
+
+                var j=a*b/i
+                console.log(i);
+                console.log(j);
+                break;
+                //break及其重要，
+                // 找到第一个就不知道了，否则就会找到最小的
+
+            }
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

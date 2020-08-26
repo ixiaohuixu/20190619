@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小米之家购物</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    /*请完成下面这个函数，实现题目要求的功能
+    当然，你也可以不按照下面这个模板来作答，完全按照自己的想法来 ^-^
+    ******************************开始写代码******************************/
+    function solution(prices, budget) {
+        //prices 是一个数组  没件商品的价格
+        //budget  是预算资金
+        var count=0;
+        var priceMin=prices[0];
+        var priceMax=prices[0];
+        var priceIndex=0;
+        for (var i=0;i<prices.length;i++){
+            if (priceMin>prices[i]){
+                priceMin = prices[i];
+            }
+        }
+        for (var i=0;i<prices.length;i++){
+            if (priceMax<prices[i]){
+                priceMax = prices[i];
+                priceIndex = i;
+            }
+        }
+        if(priceMin > budget){
+            count=-1
+        }
+         else if (Math.floor((budget/priceIndex)==0)){
+            prices.splice(priceIndex,1)
+        }
+        else if(budget%priceMax==0){
+            count +=Math.floor(budget/priceMax)
+
+        }
+        else {
+            count +=Math.floor(budget/priceMax)
+            budget -=count*priceMax;
+            prices.splice(priceIndex,1)
+            console.log(prices);
+            console.log(budget)
+            solution(prices,budget)
+
+        }
+        console.log(count+'======')
+    }
+    /******************************结束写代码******************************/
+/*javaScript实现打印1(2(3,4(,5)),6(7,)) 二叉树输出中序遍历结果*/
+
+    var res;
+
+    //var _prices_size = 2;
+
+    var _prices = [300,1000,1111];
+    //var _prices_item;
+    /*for(var _prices_i = 0; _prices_i < _prices_size; _prices_i++) {
+        var _prices_item = parseInt(read_line());
+        _prices.push(_prices_item);
+    }*/
+    var _budget = 1000;
+    res = solution(_prices, _budget);
+    //console.log(res);
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点击按键输出按键上的文字</title>
+
+</head>
+<body>
+<div>
+    <ul>
+        <li><button type="button" name="btn">老大</button></li>
+        <li><button type="button" name="btn">老二</button></li>
+        <li><button type="button" name="btn">老三</button></li>
+        <li><button type="button" name="btn">老四</button></li>
+    </ul>
+</div>
+
+  <script type="text/javascript">
+     /* (function () {
+          var lastIndex = 0
+          const oBtn = document.querySelectorAll('ul li')
+          console.log(oBtn);
+          for(var i =0;i<oBtn.length;i++){
+              oBtn[i].index = i;
+              oBtn[i].onclick = function () {
+                  if(this.index<oBtn.length){
+                       console.log(this.innerText)
+                  }
+              }
+          }
+      })();*/
+
+      /*oBtn.onclick = function () {
+          console.log('1')
+      }*/
+     const oBtn = document.querySelectorAll('ul li')
+     console.log(oBtn);
+     for(var i =0;i<oBtn.length;i++){
+         oBtn[i].index = i;
+         oBtn[i].onclick = function () {
+             if(this.index<oBtn.length){
+                 console.log(this.innerText)
+             }
+         }
+     }
+  </script>
+</body>
+</html>

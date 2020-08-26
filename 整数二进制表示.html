@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>整数二进制表示</title>
+</head>
+<body>
+<script type="text/javascript">
+     var n=8
+     divideBy2(n);
+
+     function divideBy2(decNum) {
+         var decStack = [];//二进制表示01
+         var rem;//余数
+         var count=0;
+
+         while (decNum>0){
+             rem = decNum %2;
+             decStack.push(rem);
+             decNum = Math.floor(decNum/2)
+         }
+         for(var i=decStack.length-1;i>=0;i--){
+             if(decStack[i]==1){
+                 count +=1
+             }
+         }
+        console.log(count)
+     }
+</script>
+</body>
+</html>

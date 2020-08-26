@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>驼峰字符串</title>
+</head>
+<body>
+<!--
+   1.字符串中有- @ &符号，转化为驼峰式字符串
+
+-->
+<script type="text/javascript">
+    var str = 'backgrand-color'
+    var arr = str.split('')
+    console.log(arr)
+    for (var i = 0;i<arr.length;i++){
+        if (arr[i]==='@'||arr[i]==='-'||arr[i]==='&'){
+            arr.splice(i,1)
+            arr[i]=arr[i].toUpperCase()
+        }
+
+    }
+    console.log(arr)
+</script>
+</body>
+</html>

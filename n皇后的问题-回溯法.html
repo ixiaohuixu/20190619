@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>n皇后问题--回溯法</title>
+</head>
+<body>
+<script type="text/javascript">
+    /**
+     * Created by cshao on 12/28/14.
+     */
+    function getNQueens(order) {
+        if (order < 4) {
+            console.log('N Queens problem apply for order bigger than 3');
+            return;
+        }
+
+        var nQueens = [];
+        var backTracking = false;
+        rowLoop:
+            for (var row=0; row<order; row++) {
+                if (nQueens[row] === undefined) {
+                    nQueens[row] = [];
+                }
+
+                for (var col=0; col<order; col++) {
+                    if (nQueens[row][col] === 0) {
+                        continue;
+                    } else if (backTracking && nQueens[row][col] == 1) {
+                        if (col === order-1) {
+                            resetRow(nQueens, order, row);
+                            row = row - 2;
+                            continue rowLoop;
+                        }
+                        nQueens[row][col] = 0;
+                        backTracking = false;
+                        continue;
+                    }
+
+                    nQueens[row][col] = 1;
+                    if (isQueenValid(nQueens, row, col)) {
+                        continue rowLoop;
+                    } else if (col == order-1) {
+                        backTracking = true;
+                        resetRow(nQueens, order, row);
+                        row = row - 2;
+                        continue rowLoop;
+                    } else {
+                        nQueens[row][col] = 0;
+                        continue;
+                    };
+                }
+            }
+
+        return nQueens;
+    }
+
+    function resetRow(nQueens, order, row) {
+        for (var col=0; col<order; col++) {
+            nQueens[row][col] = undefined;
+        }
+    }
+
+    function isQueenValid(nQueens, row, col) {
+        for (var i=0; i<col; i++) {
+            if (nQueens[row][i] == 1) {
+                return false;
+            }
+        }
+        for (var j=1; j<row+1; j++) {
+            if (nQueens[row-j][col]==1 || (nQueens[row-j][col-j]!=undefined && nQueens[row-j][col-j]==1) || (nQueens[row-j][col+j]!=undefined && nQueens[row-j][col+j]==1)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function printQueens(queens) {
+        for (var row=0; row<queens.length; row++) {
+            var rowText = '';
+            for (var col=0; col<queens.length; col++) {
+                if (queens[row][col]===undefined) {
+                    queens[row][col] = 0;
+                }
+                rowText = rowText + queens[row][col] + '  ';
+            }
+            console.log(rowText);
+        }
+    }
+
+    var queens = getNQueens(13);
+    printQueens(queens);
+</script>
+</body>
+</html>

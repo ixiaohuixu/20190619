@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>判断小括号是否成对出现</title>
+</head>
+<body>
+<script type="text/javascript">
+    function is_leagl_brackets(string) {
+        var array = [];
+        for (var i = 0; i < string.length; i++) {
+            var item = string[i];
+            if (item === "(") {
+                array.push("(");
+            } else if (item === ")") {
+                if (array.length === 0) {
+                    return false;
+                } else {
+                    array.pop();
+                }
+            } else {
+                continue;
+            }
+        };
+        return array.length === 0;
+    };
+
+
+    console.log("(asd):", is_leagl_brackets("(asd)"));
+    console.log("asd(asd(adsfsdf(asdf())))):", is_leagl_brackets("asd(asd(adsfsdf(asdf()))))"));
+    console.log("(asd:", is_leagl_brackets("(asd"));
+    console.log("", is_leagl_brackets(""));
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组去重reduce</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*
+    * 题1：a.用reduce（）方法把id重合的去重，
+    *     b.怎样查出重合的个数
+    * */
+    /*let log = console.log.bind(console);
+    let person = [
+        {id: 5, name: "小明"},
+        {id: 1, name: "小张"},
+        {id: 2, name: "小李"},
+        {id: 3, name: "小孙"},
+        {id: 1, name: "小周"},
+        {id: 2, name: "小陈"},
+    ];
+
+    let obj = {};//?
+
+    person = person.reduce((cur,next) => {           //cur  初始元素     next:当前元素
+       // obj[next.num]=1
+        //obj[next.id] ? "" : obj[next.id] = true && cur.push(next);  //""表示cur什么也没有push,persons数组元素不增加
+        if(!obj[next.id]){
+            obj[next.id] = 1;
+            cur.push(next);
+        }else{
+            obj[next.id] += 1;
+        }
+
+        //log(next)
+        //log(next.id+'   '+obj[next.id])
+       // log(cur)
+        return cur;
+    },[]) //设置cur默认类型为数组，并且初始值为空的数组
+    log(person);//去重之后的数组  a
+    log(obj);//查重结果的对象      b*/
+
+
+    /*
+    * 题二：字符串为"abbccdddrrr"
+    *      求出字符串中元素重合的个数
+    *      输出结果为：a:1
+    *                b:2
+    *                c:2
+    *                d:3
+    *                r:3
+    * */
+    /*var str  = "abbccdddrrr";
+    var arr = str.split('');
+
+    arr = arr.reduce((pre,next)=>{
+
+    })*/
+
+    /*
+    *           统计一个数组中有多少个不重复的单词：
+    * */
+    var arr = ["apple","orange","apple","orange","pear","orange"];
+    /*function getWordCnt(arr){
+        var obj = {};
+        for(var i= 0; i< arr.length;i++){
+            var item = arr[i];
+            if(!obj[item]){
+                obj[item] = 1;
+            }else {
+                arr.splice(i,1)
+                i--;
+                obj[item] = obj[item] +1;
+            }
+        }
+        console.log(arr)
+        return obj;
+    }*/
+    function getWordCnt(arr) {
+        var obj={};
+        arr = arr.reduce((tot,cur)=>{
+            if(obj[cur]){
+                obj[cur] +=1
+
+            }else {
+                obj[cur] = 1
+
+                tot.push(cur)
+
+            }
+            return tot
+
+        },[])
+        //console.log(obj)
+        return [arr,obj]
+    }
+    var arrObj = getWordCnt(arr);
+    console.log(arrObj[0])//去重之后的数组
+    console.log(arrObj[1])//查重之后的结果    数据类型为对象
+    var max ={
+        id:'a',
+        cnt:0
+    }
+    for(var obj in arrObj[1]){
+        //console.log(arrObj[1][obj])
+
+        /*  求最大的重复个数*/
+        if(max.cnt<arrObj[1][obj]){
+            max.id = obj
+            max.cnt = arrObj[1][obj]
+        }
+    }
+    console.log(max)
+</script>
+</body>
+</html>

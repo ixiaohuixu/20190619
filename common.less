@@ -1,0 +1,51 @@
+.check-infos{
+  table{
+    width: 89%;
+    border: 1px solid #000000;
+    table-layout: fixed;
+    caption{
+      text-align: left;
+    }
+    td,th{
+      padding:10px  8px ;
+      border: 1px solid #000000;
+      min-height: 30px;
+      //white-space: pre-wrap;
+    }
+    th{
+      background-color: #f5f7fa;
+      color: #333;
+      font-weight: normal;
+    }
+    tr:hover{
+      td,th{
+        background: #f5f7fa;
+      }
+
+    }
+  }
+  .checker{
+    position: relative;
+    width: 16px;
+    height: 16px;
+    vertical-align: baseline;
+    &:before{
+      position: absolute;
+      left: 0;
+      top: 5px;
+      content: "";
+      width: 11px;
+      height: 11px;
+      border:1px solid #606266;
+      border-radius:2px;
+    }
+    &.checked:before{
+      top: 0;
+      left: 0;
+      width: 16px;
+      height: 16px;
+      content: "\e600";
+      border:none;
+    }
+  }
+}

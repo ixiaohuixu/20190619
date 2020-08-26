@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xml:lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择排序</title>
+    <script type="text/javascript">
+        var arr=[2,58,49,26,34];
+        function change(){
+            if(arr.length==1){
+                return arr;
+                //console.log(arr)
+            }
+            var iMin=arr[0];
+            var index=0;
+            for(var i=0;i<arr.length;i++){
+                if(arr[i]<iMin){
+                    iMin=arr[i];
+                    index=i;
+                }
+            }
+            //prev 被删除的最小数
+            var prev=arr.splice(index,1);
+            console.log(prev)
+            console.log(arr)
+            return prev.concat(change(arr));
+
+        };
+        console.log(change(arr));
+
+    </script>
+
+</head>
+<body>
+
+
+</body>
+</html>

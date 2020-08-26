@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串转化为对象</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*
+    * 为了能让用户尽快找到低价机票，我们从服务器渠道航班数据后需要按价格进行排序，然后展示给用户。
+
+排序规则：
+
+1、按照价格从低到高进行排序
+
+2、相同价格按照 rank 值同高到低排序
+
+排序完成后按行输出 name:rank:code:price*/
+    const str = '{"k3845":{"name":"name3012","price":2715,"rank":1},"k3489":{"name":"name2855","price":3105,"rank":1}}';
+    const strObj = JSON.parse(str);
+    console.log(strObj)
+    for(var obj in strObj){
+        console.log(strObj[obj])
+        //console.log(typeof(obj))
+        /*if(strObj[obj].price >){
+
+        }*/
+    }
+    /*const str = '{"id":0,"name":"张三","age":12}'
+    const strToObj = JSON.parse(str)
+    console.log('str:', str)
+    console.log('strToObj:', strToObj)
+    console.log(strToObj['id'])*/
+</script>
+</body>
+</html>

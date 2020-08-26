@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>碰碰数</title>
+</head>
+<body>
+<script type="text/javascript">
+   var n=4;
+   var m=2;
+   var arr=[1,3,2,4];
+   var numArr = [[3,2],[2,4]];
+   function cou(n,m,arr,numArr) {
+       var qujian = []
+       var count =0;
+       for (var i=0;i<n;i++){
+           for (var j=i;j<n;j++){
+               qujian = arr.slice(i,j+1)
+               //console.log(qujian)
+               for (var k=0;k<m;k++){
+                   if ((qujian.indexOf(numArr[k][0])==-1)&&(qujian.indexOf(numArr[k][1])==-1)){
+                       count +=1
+                   }
+               }
+           }
+       }
+       //console.log(count)
+       return count
+   }
+
+   var res = cou(n,m,arr,numArr);
+   console.log(res)
+</script>
+</body>
+</html>

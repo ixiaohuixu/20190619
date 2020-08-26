@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>寻找zero组数</title>
+</head>
+<body>
+<script type="text/javascript">
+    var arr=[-1,2,1,5,-2];
+    pair(arr)
+
+    function pair(arr) {
+        var num=0;
+        var newArr =[];   //需要去重，要不然会一直67%
+        for (var i=0;i<arr.length;i++){
+            if (newArr.indexOf(arr[i])==-1){
+                newArr.push(arr[i]);
+            }
+        }
+        for (var i=0;i<newArr.length;i++){
+            for (var j=i+1;j<newArr.length;j++){
+                a=parseInt(newArr[i]);
+                b=parseInt(newArr[j]);
+                var c=a+b;
+                if((c===0)){
+                    num +=1
+                }
+            }
+
+        }
+
+        console.log(num)
+    }
+
+    /*
+    *
+    *
+var str = read_line();
+var arr =str.split(', ')
+var num=0;
+    for (var i=0;i<arr.length;i++){
+        for (var j=i+1;j<arr.length;j++){
+             num += pair(arr[i],arr[j])
+        }
+
+    }
+
+    function pair(a,b) {
+        a=parseInt(a);
+        b=parseInt(b);
+        var c=a+b;
+        if((c===0)){
+            return 1
+        }else return 0
+    }
+    console.log(num)
+    * */
+</script>
+</body>
+</html>

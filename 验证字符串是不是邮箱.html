@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验证字符串是不是邮箱</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*验证字符串是不是邮箱，必须以字母开头*/
+     var str='1@163.com';
+     var res;
+     res=isEmail(str);
+     console.log(res)
+     function isEmail(str) {
+         //var re=/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+         var re=/[a-zA-Z]+[\w]+(\.[\w]+)*@[\w]+(\.[\w])+/;
+         //var re =/^[a-z]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/
+         if (re.test(str) != true) {
+             return false;
+         }else{
+             return true;
+         }
+
+     }
+</script>
+</body>
+</html>

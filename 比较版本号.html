@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>比较版本号</title>
+</head>
+<body>
+<script type="text/javascript">
+    var res;
+    let s1 = 'v1.2.97a';
+    let s2 = 'v1.10.1b';
+
+    res = sortVersion(s1, s2);
+    console.log(res);
+
+    function sortVersion(s1, s2) {
+        let sArr1 = s1.replace(/[a-zA-Z]/g, (match,i)=> '.' + match.charCodeAt()).split(/[^\d]/);
+        let sArr2 = s2.replace(/[a-zA-Z]/g, (match,i)=> '.' + match.charCodeAt()).split(/[^\d]/);
+        // let sArr1 = s1.replace(/[a-zA-Z]/g, (match,i)=> '.' + match.charCodeAt()).split('.')
+        // let sArr2 = s2.replace(/[a-zA-Z]/g, (match,i)=> '.' + match.charCodeAt()).split('.')
+        console.log(sArr1);
+        console.log(sArr2);
+        // 保证两个数据长度一样，面向 `v1.2` 和 `v1.2.3` 这样的情况
+        if(sArr1.length > sArr2.length) {
+            sArr2.splice(sArr2.length, 0, ...Array(sArr1.length-sArr2.length).fill(0))
+        } else {
+            sArr1.splice(sArr1.length, 0, ...Array(sArr2.length-sArr1.length).fill(0))
+        }
+
+        // 按节比较
+        let result = '';
+        for(let i=0 ; i < sArr1.length; i ++) {
+            if (+sArr1[i] > +sArr2[i]) {
+                result = s1+','+s2;
+                break;
+            } else if (+sArr1[i] < +sArr2[i]){
+                result = s2+','+s1;
+                break;
+            }
+        }
+        return result;
+
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单词</title>
+
+    <script type="text/javascript">
+        //var str = readline();
+        var str="I like zuoyebang very much"
+        var newStr =str.split(" ")
+        var max = 0;
+        var temp;
+        var index;
+        for (var i=0;i<newStr.length;i++){
+            temp = newStr[i].length
+            if(temp>max){
+                max = temp;
+                index = newStr[i];
+            }
+        }
+
+        console.log(index+':'+max)
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

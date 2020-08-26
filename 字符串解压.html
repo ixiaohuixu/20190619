@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单词</title>
+
+    <script type="text/javascript">
+        //var str = readline();
+        var str="HG[3|B[2|CA]]F";
+        console.log(str[1])
+        var newStr=[];
+        var num = 0;
+        var str1 =str.split('')
+        console.log(str.split(''))
+        for (var i=str1.length-1;i>=0;i--){
+            if (str1[i]==='|'){
+                num = str1[i-1];
+                newStr.push(str1[i-1])
+                newStr.push(str1[i])
+                for (var j=i+1;j<str1.length;j++){
+                    newStr.push(str1[j])
+                }
+                break;
+            }
+
+        }
+        str1.splice(newStr,1)
+        //newStr = 2|cacaf
+        console.log(str+'------')
+        console.log(str1+'+++++')
+        console.log(newStr+'======')
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

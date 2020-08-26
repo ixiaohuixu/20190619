@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>连续乘积最大子序列</title>
+</head>
+<body>
+<script type="text/javascript">
+    var str = '2 1 -2 4'
+    var res;
+    res = maxMuli(str);
+    console.log(res)
+    function maxMuli(str) {
+        var arr =str.split(' ')
+
+        for (var i=0;i<arr.length;i++){
+            arr[i]=parseInt(arr[i])
+        }
+        console.log(arr)//数组
+        var numMax =[arr[0]];
+        var numMin =[arr[0]];
+        for (var i=1;i<arr.length;i++){
+            if(arr[i]>0){
+                numMax.push(Math.max(numMax[i-1]*arr[i],arr[i]))
+                numMin.push(Math.min(numMin[i-1]*arr[i],arr[i]))
+            }else {
+                numMax.push(Math.max(numMin[i-1]*arr[i],arr[i]))
+                numMin.push(Math.min(numMax[i-1]*arr[i],arr[i]))
+            }
+        }
+        for (var i=0;i<numMax.length;i++){
+            if (numMax[i]>numMax[i+1]){
+                var temp = numMax[i];
+                numMax[i]=numMax[i+1];
+                numMax[i+1]=temp
+            }
+        }
+        for (var i=0;i<numMin.length;i++){
+            if (numMin[i]<numMin[i+1]){
+                var temp = numMin[i];
+                numMin[i]=numMin[i+1];
+                numMin[i+1]=temp
+            }
+        }
+        console.log(numMax[numMax.length-1]);
+        console.log(numMin[numMin.length-1]);
+
+
+
+
+       /* var arr = str.split(' ')
+        //console.log(arr)
+        let nmax = [arr[0]];//2
+        let nmin = [arr[0]];//2
+        for(let i=1;i<arr.length;i++){
+            if(arr[i]>0){
+                nmax.push(Math.max(nmax[i-1]*arr[i],arr[i]));
+                nmin.push(Math.min(nmin[i-1]*arr[i],arr[i]));
+            }else{
+                nmax.push(Math.max(nmin[i-1]*arr[i],arr[i]));
+                nmin.push(Math.min(nmax[i-1]*arr[i],arr[i]));
+            }
+        }
+        let result=nmax[0];
+        for(let i=1;i<nmax.length;i++){
+            if(nmax[i]>result){
+                result = nmax[i];
+            }
+        }
+        return result;*/
+    }
+</script>
+</body>
+</html>

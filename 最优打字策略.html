@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>最有打字策略</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    var n=6;
+    var str='AaAAAA'
+    var strA=str.match(/[A-Z]{2,}/g)//数组
+
+    var arrA =[];
+    var count=0;
+    var num = 0;
+    for(var i=0;i<strA.length;i++){
+        arrA[i]=strA[i].split('')
+        count += 1
+        num +=arrA[i].length
+    }
+    count = count+str.length+1
+    /*strA.forEach((index,item)=>{
+        arrA[index]=item.split('')
+    })*/
+    //var arra=str.match(/[a-z]*([A-Z])/g)
+    //var count =
+    var result=str.match(/[a-z]*([A-Z])+[a-z]*/g)
+    var f1=str.match(/([A-Z])+[a-z]*/g)
+    console.log(f1)
+
+    //console.log(str)
+    //console.log(strA)
+    //console.log(arrA)
+    //console.log(arra)
+   // console.log(count)
+</script>
+</body>
+</html>
